@@ -2,6 +2,16 @@
 
 # This script will update package manager then install xdg if not already installed.
 # Then open the default web browser and open your preferred tabs
+
+# Checking if a bin directory exists
+if [ -d /home/jack/bin ];
+then
+	echo "Bin directory exits"
+else
+	mkdir -p /home/jack/bin
+	echo "Bin directory has been created!"
+fi
+
 echo "Updating system and installing xdg"
 
 sudo apt update && sudo apt install xdg-utils

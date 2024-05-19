@@ -12,6 +12,7 @@ else
 	echo "Bin directory has been created!"
 fi
 
+# Updating system and installing if needed certain dependencies
 echo "Updating system and installing xdg"
 
 sudo apt update && sudo apt install xdg-utils
@@ -22,11 +23,21 @@ sudo xdg-settings set default-web-browser google-chrome.desktop
 
 echo "Opening default browser and requested tabs"
 
-sudo xdg-open https://kdenlive.org/
-sudo xdg-open https://github.com/SoftFever/OrcaSlicer/
-sudo xdg-open https://inkscape.org/
-sudo xdg-open https://github.com/EdgeTX/edgetx/
-sudo xdg-open https://www.gimp.org/
-sudo xdg-open https://code.visualstudio.com/
-sudo xdg-open https://www.arduino.cc/en/software
+# For loop to add sleep command before opening each tab to help ease system resources for older systems!
+delay=4
+site_array=( https://kdenlive.org/ https://github.com/SoftFever/OrcaSlicer/ https://inkscape.org/ https://github.com/EdgeTX/edgetx/ https://www.gimp.org/ https://code.visualstudio.com/ https://www.arduino.cc/en/software )
+for item in "${site_array[@]}"
+do
+    echo "Opening sites followed by a short delay"
+    sudo xdg-open $item
+    sleep $delay
+done
+
+#sudo xdg-open https://kdenlive.org/
+#sudo xdg-open https://github.com/SoftFever/OrcaSlicer/
+#sudo xdg-open https://inkscape.org/
+#sudo xdg-open https://github.com/EdgeTX/edgetx/
+#sudo xdg-open https://www.gimp.org/
+#sudo xdg-open https://code.visualstudio.com/
+#sudo xdg-open https://www.arduino.cc/en/software
 
